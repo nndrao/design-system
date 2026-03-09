@@ -1,0 +1,38 @@
+{
+  "_comment": "Dark theme semantic tokens – Coinbase Advanced Trading terminal palette",
+  "background": {
+    "app":      "#0c0e12",
+    "surface":  "#161a1e",
+    "elevated": "#1e2329",
+    "overlay":  "rgba(0,0,0,0.65)"
+  },
+  "text": {
+    "primary":   "#ffffff",
+    "secondary": "#8a919e",
+    "muted":     "#5b616e",
+    "inverse":   "#050f19"
+  },
+  "border": {
+    "default": "#2a2d35",
+    "subtle":  "#1e2329",
+    "strong":  "#474d57"
+  },
+  "action": {
+    "buy":          "#00d47e",
+    "buyHover":     "#05b169",
+    "buyMuted":     "rgba(0,212,126,0.15)",
+    "buyRow":       "rgba(0,212,126,0.04)",
+    "sell":         "#ff637d",
+    "sellHover":    "#ff8a9b",
+    "sellMuted":    "rgba(255,99,125,0.15)",
+    "sellRow":      "rgba(255,99,125,0.04)",
+    "warning":      "#f0bc2a",
+    "warningMuted": "rgba(240,188,42,0.15)",
+    "info":         "#4570ff"
+  },
+  "primary": {
+    "default":    "#1652f0",
+    "hover":      "#4570ff",
+    "foreground": "#ffffff"
+  }
+}

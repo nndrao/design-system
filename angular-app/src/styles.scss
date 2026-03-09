@@ -1,0 +1,305 @@
+/* stylelint-disable scss/at-import-partial-extension */
+@import "@fontsource/inter/400.css";
+@import "@fontsource/inter/500.css";
+@import "@fontsource/inter/600.css";
+@import "@fontsource/inter/700.css";
+@import "@fontsource-variable/jetbrains-mono";
+@import "primeicons/primeicons.css";
+
+/*
+ * Trading Platform Design System - Global Styles (Angular)
+ * Coinbase-inspired palette – blue primary, clean neutrals.
+ * Custom properties match the React/Shadcn implementation
+ * for cross-framework visual consistency.
+ */
+
+:root {
+  /* Light theme */
+  --ds-background: #f7f8fa;
+  --ds-foreground: #0d1117;
+  --ds-card: #ffffff;
+  --ds-secondary: #f0f2f5;
+  --ds-muted-foreground: #4b5563;
+  --ds-accent: #e4e7ec;
+  --ds-border: #e4e7ec;
+  --ds-primary: #1652f0;
+  --ds-primary-hover: #0d40cc;
+  --ds-primary-foreground: #ffffff;
+  --ds-buy: #00a36c;
+  --ds-buy-muted: rgba(0,163,108,0.1);
+  --ds-sell: #dc2626;
+  --ds-sell-muted: rgba(220,38,38,0.1);
+  --ds-warning: #d97706;
+  --ds-elevated: #f0f2f5;
+  --ds-surface: #ffffff;
+  --ds-input: #e4e7ec;
+  --ds-font-mono: 'JetBrains Mono Variable', 'Fira Code', monospace;
+}
+
+.dark-mode {
+  /* Advanced Trading Terminal */
+  --ds-background: #0b0d11;
+  --ds-foreground: #f0f2f5;
+  --ds-card: #13161c;
+  --ds-secondary: #1a1e26;
+  --ds-muted-foreground: #8a94a6;
+  --ds-accent: #232830;
+  --ds-border: #222630;
+  --ds-primary: #2563eb;
+  --ds-primary-hover: #3b74f0;
+  --ds-primary-foreground: #ffffff;
+  --ds-buy: #10b981;
+  --ds-buy-muted: rgba(16,185,129,0.15);
+  --ds-buy-row: rgba(16,185,129,0.04);
+  --ds-sell: #f43f5e;
+  --ds-sell-muted: rgba(244,63,94,0.15);
+  --ds-sell-row: rgba(244,63,94,0.04);
+  --ds-warning: #f0bc2a;
+  --ds-elevated: #1a1e26;
+  --ds-surface: #13161c;
+  --ds-input: #1a1e26;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  background-color: var(--ds-background);
+  color: var(--ds-foreground);
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  font-size: 0.8125rem; /* 13px */
+  line-height: 1.5;
+  letter-spacing: -0.005em;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  letter-spacing: -0.02em;
+}
+
+/* Dockview theme overrides – doubled selector for specificity over built-in themes */
+.dockview-theme-dark.dockview-theme-dark,
+.dockview-theme-light.dockview-theme-light {
+  --dv-paneview-header-border-color: var(--ds-border);
+  --dv-tabs-and-actions-container-background-color: var(--ds-card);
+  --dv-activegroup-visiblepanel-tab-background-color: var(--ds-card);
+  --dv-activegroup-hiddenpanel-tab-background-color: var(--ds-secondary);
+  --dv-inactivegroup-visiblepanel-tab-background-color: var(--ds-secondary);
+  --dv-inactivegroup-hiddenpanel-tab-background-color: var(--ds-secondary);
+  --dv-tab-divider-color: transparent;
+  --dv-activegroup-visiblepanel-tab-color: var(--ds-foreground);
+  --dv-activegroup-hiddenpanel-tab-color: var(--ds-muted-foreground);
+  --dv-inactivegroup-visiblepanel-tab-color: var(--ds-muted-foreground);
+  --dv-inactivegroup-hiddenpanel-tab-color: var(--ds-muted-foreground);
+  --dv-separator-border: var(--ds-border);
+  --dv-background-color: var(--ds-background);
+  --dv-group-view-background-color: var(--ds-card);
+  --dv-tabs-container-scrollbar-color: var(--ds-muted-foreground);
+  --dv-icon-hover-background-color: var(--ds-accent);
+  --dv-drag-over-background-color: rgba(22,82,240,0.12);
+  --dv-drag-over-border-color: var(--ds-primary);
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  font-size: 0.75rem;
+}
+
+.dockview-theme-dark.dockview-theme-dark {
+  --dv-tabs-and-actions-container-background-color: #0b0d11;
+  --dv-activegroup-visiblepanel-tab-background-color: #0b0d11;
+  --dv-activegroup-hiddenpanel-tab-background-color: #0b0d11;
+  --dv-inactivegroup-visiblepanel-tab-background-color: #0b0d11;
+  --dv-inactivegroup-hiddenpanel-tab-background-color: #0b0d11;
+  --dv-background-color: #0b0d11;
+  --dv-floating-box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+}
+
+.dockview-theme-light.dockview-theme-light {
+  --dv-floating-box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+/* ─── PrimeNG → shadcn alignment ──────────────────────────────────────────── */
+
+/* Buttons: fixed height, horizontal padding, font weight */
+.p-button {
+  height: 2.25rem;        /* 36px — shadcn default */
+  padding-inline: 1rem;
+  font-weight: 500;
+  font-size: 0.875rem;
+  letter-spacing: 0;
+
+  &.p-button-sm {
+    height: 2rem;         /* 32px — shadcn sm */
+    padding-inline: 0.75rem;
+    font-size: 0.8125rem;
+  }
+
+  &.p-button-lg {
+    height: 2.75rem;      /* 44px — shadcn lg */
+    padding-inline: 1.25rem;
+    font-size: 1rem;
+  }
+
+  &.p-button-icon-only {
+    width: 2.25rem;
+    padding-inline: 0;
+  }
+}
+
+/* Inputs, Selects, Textareas: fixed height, consistent radius */
+.p-inputtext,
+.p-select .p-select-label,
+.p-multiselect .p-multiselect-label,
+.p-datepicker-input,
+.p-autocomplete input {
+  height: 2.25rem;        /* 36px */
+  font-size: 0.875rem;
+}
+
+.p-select,
+.p-multiselect,
+.p-autocomplete,
+.p-inputnumber {
+  height: 2.25rem;
+}
+
+/* Textarea: no fixed height (multi-line) but consistent font/radius */
+.p-textarea {
+  font-size: 0.875rem;
+  line-height: 1.5;
+}
+
+/* Cards: flat border + subtle shadow like shadcn */
+.p-card {
+  border: 1px solid var(--ds-border);
+  box-shadow: 0 1px 2px 0 rgba(0,0,0,0.05);
+
+  .p-card-body {
+    padding: 1.25rem;
+  }
+}
+
+/* Dialogs/Drawers: border like shadcn */
+.p-dialog,
+.p-drawer {
+  border: 1px solid var(--ds-border);
+  box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+}
+
+/* Overlays (dropdowns, popovers): border */
+.p-select-overlay,
+.p-autocomplete-overlay,
+.p-multiselect-overlay,
+.p-popover,
+.p-datepicker-panel {
+  border: 1px solid var(--ds-border);
+  box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -2px rgba(0,0,0,0.1);
+}
+
+/* Menu / ContextMenu items: compact, like shadcn command items */
+.p-menu .p-menu-item-link,
+.p-contextmenu .p-contextmenu-item-link,
+.p-menubar .p-menubar-item-link {
+  font-size: 0.875rem;
+  padding: 0.375rem 0.625rem;
+  border-radius: 4px;
+}
+
+/* Badges: pill style */
+.p-badge {
+  border-radius: 9999px;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  padding: 0 0.5rem;
+}
+
+/* Tags: shadcn-style badge */
+.p-tag {
+  border-radius: 9999px;
+  font-size: 0.6875rem;
+  font-weight: 500;
+  padding: 0.125rem 0.625rem;
+}
+
+/* Checkboxes/Radios: 1rem size */
+.p-checkbox .p-checkbox-box,
+.p-radiobutton .p-radiobutton-box {
+  width: 1rem;
+  height: 1rem;
+  border-radius: 3px;
+}
+.p-radiobutton .p-radiobutton-box {
+  border-radius: 50%;
+}
+
+/* Tabs: underline style matching shadcn Tabs */
+.p-tabs .p-tab {
+  font-size: 0.875rem;
+  font-weight: 500;
+  padding: 0.5rem 0.75rem;
+}
+
+/* DataTable: compact rows */
+.p-datatable .p-datatable-tbody > tr > td,
+.p-datatable .p-datatable-thead > tr > th {
+  font-size: 0.875rem;
+  padding: 0.625rem 0.75rem;
+}
+
+/* Chips (InputChips): pill */
+.p-chip {
+  border-radius: 9999px;
+  font-size: 0.8125rem;
+  height: 1.75rem;
+  padding: 0 0.625rem;
+}
+
+/* Toast messages */
+.p-toast .p-toast-message {
+  border-radius: 6px;
+  border: 1px solid var(--ds-border);
+  font-size: 0.875rem;
+}
+
+/* Paginator */
+.p-paginator {
+  font-size: 0.875rem;
+
+  .p-paginator-page,
+  .p-paginator-prev,
+  .p-paginator-next,
+  .p-paginator-first,
+  .p-paginator-last {
+    height: 2rem;
+    min-width: 2rem;
+    border-radius: 6px;
+  }
+}
+
+/* Slider */
+.p-slider .p-slider-handle {
+  width: 1.1rem;
+  height: 1.1rem;
+  border-radius: 50%;
+}
+
+/* Toggle switch: compact */
+.p-toggleswitch {
+  height: 1.25rem;
+  width: 2.25rem;
+}
+
+/* ─── AG Grid overrides ──────────────────────────────────────────────────── */
+
+.ag-header-cell-text {
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-weight: 500;
+}
+
+.ag-status-bar {
+  font-size: 10px;
+}

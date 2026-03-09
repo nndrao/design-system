@@ -1,0 +1,224 @@
+@import "tailwindcss";
+@import "@fontsource/inter/400.css";
+@import "@fontsource/inter/500.css";
+@import "@fontsource/inter/600.css";
+@import "@fontsource/inter/700.css";
+@import "@fontsource-variable/jetbrains-mono";
+
+/*
+ * Trading Platform Design System
+ * MarketsUI palette – blue primary, clean neutrals
+ * Shadcn/UI CSS variable convention
+ */
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  /* Light theme – clean, high-contrast */
+  --background: #f7f8fa;
+  --foreground: #0d1117;
+
+  --card: #ffffff;
+  --card-foreground: #0d1117;
+
+  --popover: #ffffff;
+  --popover-foreground: #0d1117;
+
+  --primary: #1652f0;
+  --primary-foreground: #ffffff;
+
+  --secondary: #f0f2f5;
+  --secondary-foreground: #0d1117;
+
+  --muted: #f0f2f5;
+  --muted-foreground: #4b5563;
+
+  --accent: #e4e7ec;
+  --accent-foreground: #0d1117;
+
+  --destructive: #dc2626;
+  --destructive-foreground: #ffffff;
+
+  --border: #e4e7ec;
+  --input: #e4e7ec;
+  --ring: #1652f0;
+
+  --radius: 6px;
+
+  /* Trading-specific */
+  --buy: #00a36c;
+  --buy-foreground: #ffffff;
+  --buy-muted: rgba(0,163,108,0.1);
+  --sell: #dc2626;
+  --sell-foreground: #ffffff;
+  --sell-muted: rgba(220,38,38,0.1);
+  --warning: #d97706;
+  --warning-foreground: #ffffff;
+
+  --surface: #ffffff;
+  --elevated: #f0f2f5;
+}
+
+.dark {
+  /* Advanced Trading Terminal – deep dark canvas */
+  --background: #0b0d11;
+  --foreground: #f0f2f5;
+
+  --card: #13161c;
+  --card-foreground: #f0f2f5;
+
+  --popover: #1a1e26;
+  --popover-foreground: #f0f2f5;
+
+  --primary: #2563eb;
+  --primary-foreground: #ffffff;
+
+  --secondary: #1a1e26;
+  --secondary-foreground: #f0f2f5;
+
+  --muted: #1a1e26;
+  --muted-foreground: #8a94a6;
+
+  --accent: #232830;
+  --accent-foreground: #f0f2f5;
+
+  --destructive: #f43f5e;
+  --destructive-foreground: #ffffff;
+
+  --border: #222630;
+  --input: #1a1e26;
+  --ring: #2563eb;
+
+  /* Trading-specific */
+  --buy: #10b981;
+  --buy-foreground: #ffffff;
+  --buy-muted: rgba(16,185,129,0.12);
+  --buy-row: rgba(16,185,129,0.04);
+  --sell: #f43f5e;
+  --sell-foreground: #ffffff;
+  --sell-muted: rgba(244,63,94,0.12);
+  --sell-row: rgba(244,63,94,0.04);
+  --warning: #f59e0b;
+  --warning-foreground: #0b0d11;
+
+  --surface: #13161c;
+  --elevated: #1a1e26;
+}
+
+/* Register design system colors with Tailwind v4 */
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-buy: var(--buy);
+  --color-buy-foreground: var(--buy-foreground);
+  --color-buy-muted: var(--buy-muted);
+  --color-buy-row: var(--buy-row, rgba(0,212,126,0.04));
+  --color-sell: var(--sell);
+  --color-sell-foreground: var(--sell-foreground);
+  --color-sell-muted: var(--sell-muted);
+  --color-sell-row: var(--sell-row, rgba(255,99,125,0.04));
+  --color-warning: var(--warning);
+  --color-warning-foreground: var(--warning-foreground);
+  --color-surface: var(--surface);
+  --color-elevated: var(--elevated);
+
+  --radius-sm: calc(var(--radius) - 2px);
+  --radius-md: var(--radius);
+  --radius-lg: calc(var(--radius) + 2px);
+  --radius-xl: calc(var(--radius) + 6px);
+  --radius-2xl: calc(var(--radius) + 10px);
+  --radius-full: 9999px;
+
+  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-mono: 'JetBrains Mono Variable', 'Fira Code', monospace;
+}
+
+* {
+  border-color: var(--border);
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+  font-size: 0.8125rem;
+  line-height: 1.5;
+  letter-spacing: -0.005em;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Tighter tracking on headings */
+h1, h2, h3, h4, h5, h6 {
+  letter-spacing: -0.02em;
+}
+
+/* Dockview theme overrides – doubled selector for specificity over built-in themes */
+.dockview-theme-dark.dockview-theme-dark,
+.dockview-theme-light.dockview-theme-light {
+  --dv-paneview-header-border-color: var(--border);
+  --dv-tabs-and-actions-container-background-color: var(--card);
+  --dv-activegroup-visiblepanel-tab-background-color: var(--card);
+  --dv-activegroup-hiddenpanel-tab-background-color: var(--secondary);
+  --dv-inactivegroup-visiblepanel-tab-background-color: var(--secondary);
+  --dv-inactivegroup-hiddenpanel-tab-background-color: var(--secondary);
+  --dv-tab-divider-color: var(--border);
+  --dv-activegroup-visiblepanel-tab-color: var(--foreground);
+  --dv-activegroup-hiddenpanel-tab-color: var(--muted-foreground);
+  --dv-inactivegroup-visiblepanel-tab-color: var(--muted-foreground);
+  --dv-inactivegroup-hiddenpanel-tab-color: var(--muted-foreground);
+  --dv-separator-border: var(--border);
+  --dv-background-color: var(--background);
+  --dv-group-view-background-color: var(--card);
+  --dv-tabs-container-scrollbar-color: var(--muted-foreground);
+  --dv-icon-hover-background-color: var(--accent);
+  --dv-drag-over-background-color: rgba(22,82,240,0.12);
+  --dv-drag-over-border-color: var(--primary);
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+}
+
+.dockview-theme-dark.dockview-theme-dark {
+  --dv-floating-box-shadow: 0 8px 24px rgba(0,0,0,0.5);
+  --dv-tabs-and-actions-container-background-color: #0b0d11;
+  --dv-activegroup-hiddenpanel-tab-background-color: #0b0d11;
+  --dv-inactivegroup-visiblepanel-tab-background-color: #0b0d11;
+  --dv-inactivegroup-hiddenpanel-tab-background-color: #0b0d11;
+  --dv-tab-divider-color: transparent;
+}
+
+.dockview-theme-light.dockview-theme-light {
+  --dv-floating-box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+  --dv-tabs-and-actions-container-background-color: #f7f8fa;
+  --dv-activegroup-hiddenpanel-tab-background-color: #f7f8fa;
+  --dv-inactivegroup-visiblepanel-tab-background-color: #f7f8fa;
+  --dv-inactivegroup-hiddenpanel-tab-background-color: #f7f8fa;
+  --dv-tab-divider-color: transparent;
+}
+
+/* AG Grid header & global overrides */
+.ag-header-cell-text {
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-weight: 500;
+}
+.ag-status-bar {
+  font-size: 10px;
+}
